@@ -1,0 +1,11 @@
+.ui.fixed.menu.navbar
+    .container
+        a(href='/').item 万维论坛
+        .item  提供技术支持
+        .right.menu
+            if student
+                a.item 欢迎,#{student.name}
+                a.item(href='/signout') 登出
+            else
+                a.item(href='/signup') 注册
+                a.item(href='/signin') 登录

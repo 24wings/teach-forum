@@ -1,0 +1,36 @@
+extends layouts/base-layout
+block append content
+    .container
+        .ui.two.column.centered.grid
+            .left.floated.twelve.wide.column
+                form(method='POST')
+                    .ui.form.segment
+                        h2(style='margin-top:0;') 发表话题
+                        .field
+                            .fields
+                                .field.required  
+                                    label 模块 
+                                    .ui.selection.dropdown
+                                        input(type='hidden',name='tab')
+                                        .default.text 版块
+                                        i.dropdown.icon
+                                        .menu
+                                            each table in tables
+                                                .item(data-value=table) #{table}
+                        .field.required
+                            label  标题
+                            input(placeholder='标题字数不少于10字',name='title',title='标题不少于10个字')
+                        .field.required
+                            label 内容
+                            textarea(name='content')
+                        input(type='submit',value='发布').ui.button
+                    
+            //- 右侧的个人信息和未回复的
+            .right.floated.left.aligned.four.wide.column
+                +studentCard(student,true)
+                +noReplayCard([])
+            
+                    
+block append script
+    script.
+        $('.ui.dropdown').dropdown();

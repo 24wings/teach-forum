@@ -1,0 +1,5 @@
+mixin tabs(tabs,selectedTable)
+    .ui.top.attached.tabular.menu
+        a(href='/?tab=全部',class=(selectedTable=='全部'||selectedTable=='' ?"active":"")).item 全部
+        each tab in tabs
+            a(href='/?tab='+tab,class=(tab==selectedTable?"active":"")).item  #{tab} 

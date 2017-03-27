@@ -1,0 +1,18 @@
+.ui.segment
+    .ui.comments
+        .ui.header 评论
+        .ui.divider
+        each comment in comments
+            a.avatar(href='/user/'+comment.student.name)
+                img(src=comment.student.avatar)
+            .content
+                a.author(href='/user/'+comment.student.name)
+                .metadata
+                    span.date #{moment(updateDt).fromNow()}
+                .text #{comment.content}
+        if student
+            form.ui.reply.form(method="POST")
+                input(type='hidden',name="topicId",value=topic._id)
+                .field
+                    textarea(name="content")
+                input(type="submit",value='留言').ui.button

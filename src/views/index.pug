@@ -1,0 +1,16 @@
+extends layouts/base-layout
+block append content
+  .container
+    .ui.two.column.centered.grid
+      .left.floated.twelve.wide.column
+        +tabs(tables,selectedTable)
+        +list(articles)
+
+      .right.floated.left.aligned.four.wide.column
+        if student
+          +studentCard(student,true)
+          include layouts/createCard
+        include layouts/linkCard
+                
+block append script
+  script(src='/scripts/index.js')

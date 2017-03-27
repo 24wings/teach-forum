@@ -1,0 +1,10 @@
+extends ../layouts/base-layout
+block append content
+    .container
+        .ui.two.column.centered.grid
+            .left.floated.left.aligned.twelve.wide.column
+                +list(articles)
+            .right.floated.left.aligned.four.wide.column
+                +studentCard(student,true)
+                include ../layouts/createCard
+                include ../layouts/linkCard

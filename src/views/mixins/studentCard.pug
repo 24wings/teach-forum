@@ -1,0 +1,26 @@
+mixin studentCard(student,isLogin)
+    .ui.cards
+        .card
+            .content
+                .userCard
+                    img(src=student.avatar)
+                    .info
+                        p #{student.name}
+                        p.meta  #{student.gender}
+                .description
+                    | #{student.signature}
+                if isLogin
+                    .extra.content
+                    a 
+                        i.home.icon
+                        | 主页
+                    a.right.floated
+                        i.setting.icon
+                        | 设置 
+                .extra.content
+                    a 
+                        i.home.icon  
+                        |私信
+                    a.right.floated
+                        i.icon.plus
+                        | 加好友

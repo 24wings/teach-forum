@@ -1,0 +1,41 @@
+extends layouts/base-layout
+block append content
+    .container
+        .ui.form.segment(style='width:600px;margin:40px auto')
+            h4.ui.dividing.header  登录
+            form(method='POST')
+                .two.fields
+                    .field.required
+                        label 用户名
+                        input(type='text',placeholder='用户名',name='name',required="required" )
+                    .field.required
+                        label 性别
+                        .ui.selection.dropdown
+                            .default.text 选择性别
+                            i.dropdown.icon
+                            input(type='hidden',name='gender',required="required")
+                            .menu
+                                .item(data-value='男') 男
+                                .item(data-value='女') 女
+                .two.fields
+                    .field.required
+                        label 密码
+                        input(placeholder='密码',type='password',name='password',required="required")
+                    .field.required
+                        label 重复密码
+                        input(placeholder='密码',type='password',name='repassword',required="required")
+                .field.required
+                    label 邮箱
+                    input(placeholder='邮箱',type='email',name='email',required="required")
+                .field
+                    label 个性签名
+                    input(placeholder='限制在50字以内',type='text',name='signature')
+                input(type='submit',value='注册').ui.button.fluid
+
+
+block append script 
+    script.
+        $('.ui.dropdown').dropdown();
+
+
+                            

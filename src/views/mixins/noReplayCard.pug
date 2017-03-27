@@ -1,0 +1,9 @@
+mixin noReplayCard(cards)
+    .ui.cards
+        .card
+            .content
+                b 无人回复的话题
+                .ui.divider
+                .ul.list
+                    each card in cards
+                        a.item.summary(href='/topoc/#{card._id}') #{card.title} 

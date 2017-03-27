@@ -1,0 +1,38 @@
+extends layouts/base-layout
+block append content
+    .container
+        .ui.two.column.centered.grid
+            .left.floated.twelve.wide.column
+                .ui.segment
+                    h2(style='margin-top:0') #{topic.title}
+                .topic
+                    | 发布于 #{moment(topic.createDt).fromNow()}
+                    | 作者  #{topic.student.name}
+                    | #{topic.pv} 次浏览
+                    | #{topic.comment} 个回复
+                    | #{topic.tab}
+                .ui.divider
+                .content  #{topic.content}
+                .ui.segment
+                    .ui.comments
+                        .ui.header 评论
+                        .ui.divider
+                        each comment in comments
+                            .comment
+                                a.avatar(href='/user/'+comment.student.name)
+                                    img(src=comment.student.avatar)
+                                .content
+                                    a.author(href='/user/'+comment.student.name)
+                                    .metadata
+                                        span.date #{moment(updateDt).fromNow()}
+                                    .text #{comment.content}
+                        if student
+                            form.ui.reply.form(method="POST")
+                                input(type='hidden',name="topicId",value=topic._id)
+                                .field
+                                    textarea(name="content")
+                                input(type="submit",value='留言').ui.button
+            .right.floated.left.aligned.four.wide.column
+                +studentCard(author,false) 
+                +noReplayCard([])
+            
